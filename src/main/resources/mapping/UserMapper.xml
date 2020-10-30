@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sl.product.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.sl.product.pojo.User">
+        <result column="key_id" jdbcType="BIGINT" property="keyId" />
+        <result column="account_number" jdbcType="VARCHAR" property="accountNumber" />
+        <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+        <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+        <result column="register_time" jdbcType="TIMESTAMP" property="registerTime" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="del_status" jdbcType="VARCHAR" property="delStatus" />
+    </resultMap>
+
+    <select id="select" resultType="com.sl.product.pojo.User">
+        select * from user where key_id = #{keyId}
+    </select>
+
+    <select id="login" resultType="com.sl.product.pojo.User">
+        select * from user where account_number = #{accountNumber} and   password = #{password}
+    </select>
+
+    <select id="accountRepetition" resultType="com.sl.product.pojo.User">
+        select * from user where account_number = #{accountNumber}
+    </select>
+
+    <select id="addUser" resultType="Integer">
+        INSERT INTO `abc`.`user`(`key_id`, `account_number`, `nick_name`, `avatar`, `register_time`, `password`, `del_status`)
+        VALUES (#{keyId},#{accountNumber},#{nickName},#{avatar},#{registerTime},#{password},#{delStatus});
+    </select>
+
+
+</mapper>
