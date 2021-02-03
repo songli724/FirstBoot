@@ -33,6 +33,9 @@ mybatis:
       hibernate: ERROR
     file: d:\\springboot3\\log\\demo2.log
 
-
+custom-exception:
+  codes:
+    A500: 提示：系统内部异常！
+    A000: 提示：%s
 
 

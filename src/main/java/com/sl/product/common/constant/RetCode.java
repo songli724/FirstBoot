@@ -10,7 +10,7 @@ public enum RetCode {
     SUCCESS(200),
 
     //内部错误
-    ERROR(500);
+    ERROR(9999999);
 
     private int code;
 

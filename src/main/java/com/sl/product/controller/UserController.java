@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author ：sl
@@ -27,6 +29,23 @@ public class UserController {
     private UserService userService;
 
     /**
+     * 获取map
+     *
+     * @return
+     */
+    @ApiOperation(value = "获取map", notes = "获取map")
+    @GetMapping("/getMap")
+    public Map<String, String> getMap() {
+        Map<String, String> map = new HashMap<>(4);
+        map.put("08:30", "起床");
+        map.put("08:50", "出门");
+        map.put("09:10", "打卡");
+        map.put("18:00", "下班");
+        return map;
+    }
+
+
+    /**
      * 根据id查询用户信息
      *
      * @param keyId
@@ -34,7 +53,7 @@ public class UserController {
      */
     @ApiOperation(value = "根据id查询用户信息", notes = "根据id查询用户信息")
     @GetMapping("/getUser/{keyId}")
-    public ResultUserDto GetUser(@PathVariable @NotNull @Valid @ApiParam(name = "keyId", value = "用户id", required = true) Long keyId) {
+    public ResultUserDto getUser(@PathVariable @NotNull @Valid @ApiParam(name = "keyId", value = "用户id", required = true) Long keyId) {
         return userService.select(keyId);
     }
 
