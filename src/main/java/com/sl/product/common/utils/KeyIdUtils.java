@@ -16,4 +16,8 @@ public class KeyIdUtils {
         long l = Long.valueOf(pkPrefix + String.format("%1$04d", randomNum));
         return l;
     }
+
+    public static void main(String[] args) {
+        System.out.println(getKeyId());
+    }
 }
